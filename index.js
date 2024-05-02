@@ -1,17 +1,28 @@
 #! /usr/bin/env node 
 import inquirer from "inquirer";
-console.log("WELCOME TO THE NUMBER GUESSING GAME");
-const randomNumber = Math.floor(Math.random() * 10 + 1);
+import chalk from "chalk";
+// console.log(chalk.bgGreen.bold('Welcome') + ' ' + chalk.red.bgGreen.bold('to') + ' ' + chalk.blue.bgGreen.bold('number') + ' ' + chalk.red.bgGreen.bold('guessing') + ' ' + chalk.blue.bgGreen.bold('game'));
+function rainbowText(text) {
+    const rainbowColors = [chalk.red, chalk.yellow, chalk.green, chalk.blue, chalk.magenta];
+    let rainbowText = '';
+    for (let i = 0; i < text.length; i++) {
+        const color = rainbowColors[i % rainbowColors.length];
+        rainbowText += color(text[i]);
+    }
+    return rainbowText;
+}
+console.log(rainbowText('Welcome to number guessing game'));
+const randomNumber = (chalk.yellow.bold(Math.floor(Math.random() * 10 + 1)));
 const answers = await inquirer.prompt([
     {
         name: "userGuessedNumber",
         type: "number",
-        message: "Please Guess a number:"
+        message: chalk.italic.bold("Please Guess a Number:"),
     }
 ]);
 if (answers.userGuessedNumber === randomNumber) {
-    console.log("CONGRATULATIONS! YOU WIN");
+    console.log(chalk.yellow.italic.bold("Congratulations! You win"));
 }
 else {
-    console.log(`YOU GUESSED WRONG NUMBER, YOUR RIGHT NUMBER IS: ${randomNumber}`);
+    console.log(chalk.red.italic.bold(`You guessed wrong number, Your right number is: ${randomNumber}`));
 }
