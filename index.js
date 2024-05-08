@@ -11,18 +11,18 @@ function rainbowText(text) {
     return rainbowText;
 }
 console.log(rainbowText('Welcome to number guessing game'));
-const randomNumber = (Math.floor(Math.random() * 1 + 1));
+const randomNumber = (Math.floor(Math.random() * 4 + 1));
 const answers = await inquirer.prompt([
     {
         name: "userGuessedNumber",
         type: "number",
-        message: chalk.bold.italic("Please Guess a Number:"),
+        message: chalk.italic("Please Guess a Number:"),
     }
 ]);
 if (answers.userGuessedNumber === randomNumber) {
-    console.log(chalk.yellow.italic("Congratulations! You win"));
+    console.log(chalk.yellow("Congratulations! You win"));
 }
 else {
-    console.log(chalk.red.italic.bold("You guessed wrong number " + ",", "your right number is: " +
-        chalk.yellow.bold(`${randomNumber}`)));
+    console.log(chalk.red("You guessed wrong number " + ",", "your right number is: " +
+        chalk.yellow(`${randomNumber}`)));
 }
