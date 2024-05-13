@@ -14,13 +14,13 @@ function rainbowText(text: string): string {
 }
 console.log(rainbowText('Welcome to number guessing game'));
 
-const randomNumber = (Math.floor(Math.random() * 4 + 1));
+const randomNumber = (Math.floor(Math.random() * 5 + 1));
 
 const answers =  await inquirer.prompt([
     {
         name: "userGuessedNumber",
         type: "number",
-        message: chalk.italic("Please Guess a Number:"),
+        message: chalk.bold("Please Guess a Number (1-5):"),
     }
 ]);
 
